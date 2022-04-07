@@ -1,18 +1,33 @@
 const button = document.getElementById("button");
 
+const firstBinary = document.getElementById("firstBinary");
+const secondBinary = document.getElementById("secondBinary");
+
+let firstNumber;
+let secondNumber;
+
 const getValues = () => {
-    const firstNumber = parseInt(document.getElementById("firstNumber").value);
-    const secondNumber = parseInt(document.getElementById("secondNumber").value);
+    firstNumber = document.getElementById("firstNumber").value;
+    secondNumber = parseInt(document.getElementById("secondNumber").value);
+    return (firstNumber, secondNumber)
+}
 
-    console.log(">>", firstNumber + secondNumber);
-    console.log(">>", secondNumber.toString(2));
+const getAndDisplayValues = () => {
+    firstNumber = document.getElementById("firstNumber").value;
+    secondNumber = parseInt(document.getElementById("secondNumber").value);
 
+    firstBinary.innerText = `${firstNumber} em binário é ${parseInt(firstNumber).toString(2)}`;
+    secondBinary.innerText = `${secondNumber} em binário é ${parseInt(secondNumber).toString(2)}`;
 }
 
 button.addEventListener("click", function (e) {
     e.preventDefault();
 
-    getValues();
+    getAndDisplayValues();
+});
 
-})
+
+
+
+
 
