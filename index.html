@@ -11,29 +11,19 @@
 </head>
 
 <body>
-    <form action="">
-        <span class="label">
-            Primeiro número:
-        </span>
-        <input name="firstNumber" id="firstNumber" class="input-padrao" /><br />
+    <div class="container">
+        <div class="titleContainer">
+            <h1>Calculadora Binária</h1>
+        </div>
 
-        <span class="label">
-            Segundo número:
-        </span>
-        <input type="number" name="secondNumber" id="secondNumber" class="input-padrao" /><br />
-
-        <input type="submit" value="Calcular" id="button" />
-    </form>
-
-
-    <span>
-        Valores selecionados em binário:
-    </span>
-    </br>
-    <span id="firstBinary"></span>
-    </br>
-    <span id="secondBinary"></span>
-    <script src="script.js" defer></script>
+        <div class="messageContainer"></div>
+        <div class="content">
+            <div class="displayContainer">
+                <p class="displayValue" id="display"></p>
+            </div>
+            <div class="keyboardContainer"></div>
+        </div>
+    </div>
 </body>
 
 </html>
