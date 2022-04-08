@@ -5,6 +5,8 @@ const keys = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "C", "=", "«",
 ];
 
+const teste = ["a", "b", "c"]
+
 const clean = () => {
     display.innerHTML = " ";
 }
@@ -17,8 +19,6 @@ const addNumber = (value) => {
         display.innerHTML += value;
     }
 }
-
-
 
 const backspace = () => {
     if (display.textContent) {
@@ -63,5 +63,6 @@ keys.forEach(key => {
     keyboardButton.addEventListener("click", () => handleClick(key));
     keyboard.append(keyboardButton);
 });
+
 
 
