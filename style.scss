@@ -35,14 +35,25 @@ body {
 
 .displayContainer {
   width: 248px;
-  height: 50px;
-  text-align: right;
-  margin-bottom: 30px;
+  height: 60px;
+  overflow: hidden;
+  margin-bottom: 40px;
   border-bottom: 2px solid #D8BFD8;
 
-  // p {
-  //   font-size: 22px;
-  // }
+  p {
+    text-align: right;
+  }
+
+  span {
+    font-size: 12px;
+    margin-bottom: 10px
+  }
+}
+
+
+.displayBinaryContainer {
+  @extend .displayContainer;
+  margin-bottom: 30px;
 }
 
 .keyboardContainer {

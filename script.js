@@ -1,5 +1,6 @@
 const keyboard = document.querySelector(".keyboardContainer");
-const display = document.querySelector(".displayValue");
+const displayNumber = document.querySelector(".displayValue");
+const displayBinary = document.querySelector(".displayBinaryValue");
 
 const keys = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "C", "=", "«",
@@ -8,34 +9,38 @@ const keys = [
 const teste = ["a", "b", "c"]
 
 const clean = () => {
-    display.innerHTML = " ";
+    displayNumber.innerHTML = " ";
 }
 
 const addNumber = (value) => {
-    if (display.textContent == "Erro!") {
+    if (displayNumber.textContent == "Erro!") {
         clean();
-        display.innerHTML += value;
+        displayNumber.innerHTML += value;
+        //displayBinary.innerHTML += value;
     } else {
-        display.innerHTML += value;
+        displayNumber.innerHTML += value;
+        //displayBinary.innerHTML += (value).toString(2);
     }
 }
 
 const backspace = () => {
-    if (display.textContent) {
-        if (display.textContent == "Erro!") {
+    if (displayNumber.textContent) {
+        if (displayNumber.textContent == "Erro!") {
             clean();
         } else {
-            let displayed = document.getElementById("display").innerHTML;
-            display.innerHTML = displayed.substring(0, displayed.length - 1);
+            let displayed = document.getElementById("displayNumber").innerHTML;
+            displayNumber.innerHTML = displayed.substring(0, displayed.length - 1);
         }
     }
 }
 
 const result = () => {
-    if (display.textContent.match("/0")) {
-        document.getElementById("display").innerHTML = "Erro!"
+    const result = eval(displayNumber.innerHTML);
+    if (displayNumber.textContent.match("/0")) {
+        document.getElementById("displayNumber").innerHTML = "Erro!"
     } else {
-        document.getElementById("display").innerHTML = eval(display.innerHTML);
+        document.getElementById("displayNumber").innerHTML = result;
+        document.getElementById("displayBinary").innerHTML = parseInt(result).toString(2);
     }
 }
 
