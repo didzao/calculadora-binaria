@@ -2,6 +2,9 @@ const keyboard = document.querySelector(".keyboardContainer");
 const displayNumber = document.querySelector(".displayValue");
 const displayBinary = document.querySelector(".displayBinaryValue");
 
+// let inputNumber;
+// let operator;
+
 const keys = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "C", "=", "«",
 ];
@@ -10,6 +13,7 @@ const teste = ["a", "b", "c"]
 
 const clean = () => {
     displayNumber.innerHTML = " ";
+    displayBinary.innerHTML = " ";
 }
 
 const addNumber = (value) => {
@@ -34,10 +38,32 @@ const backspace = () => {
     }
 }
 
+const splitInputNumbers = (displayNumber) => {
+
+    let operator = displayNumber.innerHTML.split(/[0-9]/).join("").split("");
+
+    splitNumbers = displayNumber.innerHTML.split(/[\+\-\*\/]/);
+
+    console.log("aaaa", operator)
+
+    return { splitNumbers, operator };
+}
+
 const result = () => {
+    splitInputNumbers(displayNumber);
+
+    console.log("zzz", eval(parseInt(splitInputNumbers(displayNumber).splitNumbers[0]).toString(2) + parseInt(splitInputNumbers(displayNumber).splitNumbers[1]).toString(2)))
+
+    // numbers = parseInt(splitInputNumbers(displayNumber).splitNumbers[0]).toString(2)
+
+    //console.log("display", a[0]);
+
+    //displayNumber.innerHTML.split("*", [0])
+
     const result = eval(displayNumber.innerHTML);
-    if (displayNumber.textContent.match("/0")) {
-        document.getElementById("displayNumber").innerHTML = "Erro!"
+    if (displayNumber.textContent.match("/0") || displayNumber.textContent === "") {
+        document.getElementById("displayNumber").innerHTML = "Erro!";
+        document.getElementById("displayBinary").innerHTML = "Erro!";
     } else {
         document.getElementById("displayNumber").innerHTML = result;
         document.getElementById("displayBinary").innerHTML = parseInt(result).toString(2);
@@ -47,7 +73,7 @@ const result = () => {
 const handleClick = (key) => {
     switch (key) {
         case "C":
-            clean()
+            clean();
             break;
         case "«":
             backspace();
