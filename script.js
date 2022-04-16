@@ -96,4 +96,56 @@ keys.forEach(key => {
 });
 
 
+// function binaryAddition(firstValue, secondValue){
+//     let result = "",
+//         carry = 0;
+  
+//     while(firstValue || secondValue || carry){
+//       let sum = +firstValue.slice(-1) + +secondValue.slice(-1) + carry; // get last digit from each number and sum 
+  
+//       if( sum > 1 ){  
+//         result = sum%2 + result;
+//         carry = 1;
+//       }
+//       else{
+//         result = sum + result;
+//         carry = 0;
+//       }
+      
+//       // trim last digit (110 -> 11)
+//       firstValue = firstValue.slice(0, -1)
+//       secondValue = secondValue.slice(0, -1)
+//     }
+    
+//     return result;
+//   }
+  
+//   const flipBit = (bit) => bit === '1' ? '0' : '1';
+  
+//   const signBit = (b) => b.charAt(0);
+  
+//   const twosComplement = (value) => {
+//       let twosComplementValue = '';
+//       const lastOne = value.lastIndexOf('1');
+  
+//     if (lastOne === -1) {
+//         return '1' + value;
+//       } else {
+//         for (let i = 0; i < lastOne; i++) {
+//           twosComplementValue += flipBit(value[i]);
+//         }
+//       }
+//       twosComplementValue += value.substring(lastOne);
+//     console.log("qq", signBit( twosComplementValue))
+//     //console.log(signBit(twosComplementValue))
+//       return twosComplementValue;
+//   }
+  
+//   console.log("aaa", binaryAddition("10000011", "00000001"))
+  
+  
+  // a multiplicação será feita com recursividade
+  // a subtração vai ser feita junto com a adição
+
+
 
