@@ -1,9 +1,11 @@
 const keyboard = document.querySelector(".keyboardContainer");
-const displayNumber = document.querySelector(".displayValue");
+const inputNumber = document.querySelector(".displayValue");
 const displayBinary = document.querySelector(".displayBinaryValue");
 
-// let inputNumber;
-// let operator;
+let result;
+let operator;
+let splitNumbers;
+
 
 const keys = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "C", "=", "«",
@@ -12,62 +14,159 @@ const keys = [
 const teste = ["a", "b", "c"]
 
 const clean = () => {
-    displayNumber.innerHTML = " ";
-    displayBinary.innerHTML = " ";
+    result = undefined
+    inputNumber.innerHTML = "";
+    displayBinary.innerHTML = "";
 }
 
-const addNumber = (value) => {
-    if (displayNumber.textContent == "Erro!") {
+const concatNumber = (value) => {
+    if (inputNumber.textContent == "Erro!") {
         clean();
-        displayNumber.innerHTML += value;
-        //displayBinary.innerHTML += value;
+        inputNumber.innerHTML += value;
+    } else if (result != undefined) {
+        clean();
+        inputNumber.innerHTML += value;
     } else {
-        displayNumber.innerHTML += value;
+        inputNumber.innerHTML += value;
         //displayBinary.innerHTML += (value).toString(2);
+        // por disable nos botões quando for identificado um *, + ou / ou -,-
     }
 }
 
 const backspace = () => {
-    if (displayNumber.textContent) {
-        if (displayNumber.textContent == "Erro!") {
+    if (inputNumber.textContent) {
+        if (inputNumber.textContent == "Erro!") {
             clean();
         } else {
             let displayed = document.getElementById("displayNumber").innerHTML;
-            displayNumber.innerHTML = displayed.substring(0, displayed.length - 1);
+            inputNumber.innerHTML = displayed.substring(0, displayed.length - 1);
         }
     }
 }
 
 const splitInputNumbers = (displayNumber) => {
-
-    let operator = displayNumber.innerHTML.split(/[0-9]/).join("").split("");
+    operator = displayNumber.innerHTML.split(/[0-9]/).join("").split("");
 
     splitNumbers = displayNumber.innerHTML.split(/[\+\-\*\/]/);
-
-    console.log("aaaa", operator)
-
-    return { splitNumbers, operator };
 }
 
-const result = () => {
-    splitInputNumbers(displayNumber);
+const addZeros = (binaryStr) => {
+    return "00000000".substring(binaryStr.length) + binaryStr;
+}
 
-    console.log("zzz", eval(parseInt(splitInputNumbers(displayNumber).splitNumbers[0]).toString(2) + parseInt(splitInputNumbers(displayNumber).splitNumbers[1]).toString(2)))
+const binaryAddition = (firstValue, secondValue) => {
+    let sumResult = "",
+    carry = 0;
 
-    // numbers = parseInt(splitInputNumbers(displayNumber).splitNumbers[0]).toString(2)
+    let firstBinary = firstValue;
+    let secondBinary = secondValue;
 
-    //console.log("display", a[0]);
-
-    //displayNumber.innerHTML.split("*", [0])
-
-    const result = eval(displayNumber.innerHTML);
-    if (displayNumber.textContent.match("/0") || displayNumber.textContent === "") {
-        document.getElementById("displayNumber").innerHTML = "Erro!";
-        document.getElementById("displayBinary").innerHTML = "Erro!";
-    } else {
-        document.getElementById("displayNumber").innerHTML = result;
-        document.getElementById("displayBinary").innerHTML = parseInt(result).toString(2);
+    if (typeof firstValue === "number") {
+        firstBinary = addZeros(parseInt(firstValue).toString(2))
+        
     }
+
+    if (typeof secondValue === "number") {
+        secondBinary = addZeros(parseInt(secondValue).toString(2))
+    }
+
+    console.log("first", firstBinary )
+    console.log("second", secondBinary)
+
+    while(firstBinary || secondBinary || carry){
+        let sum = +firstBinary.slice(-1) + +secondBinary.slice(-1) + carry; 
+
+        if( sum > 1 ){  
+        sumResult = sum%2 + sumResult;
+        carry = 1;
+        }
+        else{
+        sumResult = sum + sumResult;
+        carry = 0;
+        }
+    
+        firstBinary = firstBinary.slice(0, -1)
+        secondBinary = secondBinary.slice(0, -1)
+    }
+    console.log("resultadoooo", sumResult);
+
+    return sumResult.substring(sumResult.length - 8);
+}
+
+const flipBit = (bit) => bit === '1' ? '0' : '1';
+
+// const signBit = (b) => b.charAt(0);
+
+const convertBinaryToDecimal = binary => {
+    return (
+        parseInt(binary.length >= 8 && binary[0] === "1" ? binary.padStart(32, "1") : binary.padStart(32, "0"), 2) >> 0
+)};
+
+const twosComplement = (value) => {
+
+    let twosComplementValue = '';
+    let binaryValue = addZeros(value.toString(2));
+    const lastOne = binaryValue.lastIndexOf('1');
+
+    if (lastOne === -1) {
+        return '1' + binaryValue;
+    } else {
+        for (let i = 0; i < lastOne; i++) {
+            twosComplementValue += flipBit(binaryValue[i]);
+        }
+    }
+        twosComplementValue += binaryValue.substring(lastOne);
+        return twosComplementValue;
+}
+
+const isBiggerThan255 = (currentValue) => currentValue > 255;
+
+//console.log("ttttttt", twosComplement("10"))
+
+const mathOperations = (arrayOfNumbers) => {
+
+    if (operator.includes("+") && operator.indexOf("-") === -1) {
+        result = binaryAddition(arrayOfNumbers[0], arrayOfNumbers[1]);
+    }  else if (operator.includes("-")) {
+
+        if (operator.length === 1 && operator.indexOf("-") === 0) {
+            result = binaryAddition(arrayOfNumbers[0], twosComplement(arrayOfNumbers[1]));
+        } else if (operator.length >= 2 && operator.indexOf("-") === 0 && operator.indexOf("-", 1) === 1) {
+           
+            result = binaryAddition(twosComplement(arrayOfNumbers[1]), twosComplement(arrayOfNumbers[2]))
+
+        } else if (operator.length >= 2 && operator.indexOf("-") === 0 ) {
+
+            result = binaryAddition(twosComplement(arrayOfNumbers[1]), arrayOfNumbers[2])
+        }
+    }
+}
+
+console.log(">>>", twosComplement("11111011"))
+
+const operationResult = () => {
+    splitInputNumbers(inputNumber);
+
+    let decimalResult;
+
+    const arrayOfNumbers = splitNumbers.map(Number);
+
+    if (inputNumber.textContent.match("/0") || inputNumber.textContent === "") {
+        decimalResult = result = "Erro!";
+    } else if (arrayOfNumbers.some(isBiggerThan255)) {
+        decimalResult = result = "Erro!";
+    }
+    else {
+        mathOperations(arrayOfNumbers);
+    }
+
+    if (result !== "Erro!") {
+        decimalResult = convertBinaryToDecimal(result);
+    }
+    console.log("zzz", splitNumbers)
+    document.getElementById("displayBinary").innerHTML = result;
+    document.getElementById("displayNumber").innerHTML = decimalResult;
+
 }
 
 const handleClick = (key) => {
@@ -79,10 +178,10 @@ const handleClick = (key) => {
             backspace();
             break;
         case "=":
-            result();
+            operationResult();
             break;
         default:
-            addNumber(key);
+            concatNumber(key);
             break;
     }
 }
@@ -90,10 +189,17 @@ const handleClick = (key) => {
 keys.forEach(key => {
     const keyboardButton = document.createElement("button");
     keyboardButton.textContent = key;
-    keyboardButton.setAttribute("id", key);
+    keyboardButton.setAttribute("key", key);
+    keyboardButton.setAttribute("class", "button" + key);
     keyboardButton.addEventListener("click", () => handleClick(key));
     keyboard.append(keyboardButton);
 });
+
+
+const y = document.querySelector(".button6");
+console.log("yyyy", y)
+
+//y.setAttribute("disabled", "disabled")
 
 
 // function binaryAddition(firstValue, secondValue){
