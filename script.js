@@ -6,6 +6,7 @@ let result;
 let operator;
 let splitNumbers;
 
+//mudar entrada para resultado quando clica no =
 
 const keys = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "C", "=", "«",
@@ -54,7 +55,7 @@ const addZeros = (binaryStr) => {
     return "00000000".substring(binaryStr.length) + binaryStr;
 }
 
-const binaryAddition = (firstValue, secondValue) => {
+const binarySum = (firstValue, secondValue) => {
     let sumResult = "",
     carry = 0;
 
@@ -121,23 +122,53 @@ const twosComplement = (value) => {
 
 const isBiggerThan255 = (currentValue) => currentValue > 255;
 
-//console.log("ttttttt", twosComplement("10"))
 
 const mathOperations = (arrayOfNumbers) => {
 
-    if (operator.includes("+") && operator.indexOf("-") === -1) {
-        result = binaryAddition(arrayOfNumbers[0], arrayOfNumbers[1]);
-    }  else if (operator.includes("-")) {
-
+    if (
+        operator.includes("+") 
+        && operator.indexOf("-") === -1 
+        && operator.indexOf("*") === -1 
+        && operator.indexOf("/") === -1
+    ) {
+        result = binarySum(arrayOfNumbers[0], arrayOfNumbers[1]);
+    }  else if (
+        operator.includes("-") 
+        && operator.indexOf("*") === -1 
+        && operator.indexOf("/") === -1
+    ) {
         if (operator.length === 1 && operator.indexOf("-") === 0) {
-            result = binaryAddition(arrayOfNumbers[0], twosComplement(arrayOfNumbers[1]));
+            result = binarySum(arrayOfNumbers[0], twosComplement(arrayOfNumbers[1]));
         } else if (operator.length >= 2 && operator.indexOf("-") === 0 && operator.indexOf("-", 1) === 1) {
-           
-            result = binaryAddition(twosComplement(arrayOfNumbers[1]), twosComplement(arrayOfNumbers[2]))
-
+            result = binarySum(twosComplement(arrayOfNumbers[1]), twosComplement(arrayOfNumbers[2]))
         } else if (operator.length >= 2 && operator.indexOf("-") === 0 ) {
-
-            result = binaryAddition(twosComplement(arrayOfNumbers[1]), arrayOfNumbers[2])
+            result = binarySum(twosComplement(arrayOfNumbers[1]), arrayOfNumbers[2])
+        }
+    } else if (operator.includes("*")) {
+        if (operator.includes("-")) {
+            if (operator.indexOf("-") === 1) {
+                result = "*"
+                console.log("op", operator)
+            } else if (operator.length === 2 && operator.indexOf("-") === 0) {
+                result = "**"
+            } else if (operator.length === 3 && operator.indexOf("*") === 1) {
+                result = "***";
+            }
+        } else {
+            result = "*********"
+        }
+    } else if (operator.includes("/")){
+        if (operator.includes("-")) {
+            if (operator.indexOf("-") === 1) {
+                result = "/"
+                console.log("op", operator)
+            } else if (operator.length === 2 && operator.indexOf("-") === 0) {
+                result = "//"
+            } else if (operator.length === 3  && operator.indexOf("/") === 1) {
+                result = "///";
+            }
+        } else {
+            result = "barra"
         }
     }
 }
@@ -151,7 +182,12 @@ const operationResult = () => {
 
     const arrayOfNumbers = splitNumbers.map(Number);
 
-    if (inputNumber.textContent.match("/0") || inputNumber.textContent === "") {
+    if (
+        inputNumber.textContent.includes("/0") 
+            || inputNumber.textContent.includes("/-0") 
+            || inputNumber.textContent.includes("/+0")
+            || inputNumber.textContent === ""
+        ) {
         decimalResult = result = "Erro!";
     } else if (arrayOfNumbers.some(isBiggerThan255)) {
         decimalResult = result = "Erro!";
