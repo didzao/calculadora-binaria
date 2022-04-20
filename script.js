@@ -122,8 +122,21 @@ const twosComplement = (value) => {
 
 const isBiggerThan255 = (currentValue) => currentValue > 255;
 
+const binaryDivision = (firstValue, secondValue) => {
+    let i = 0;
+    while (firstValue > 0 && firstValue >= secondValue) {
+        firstValue = binarySum((firstValue), twosComplement(secondValue));
+        i++
+    }
+    const quotient = i.toString(2)
+    return quotient;
+}
 
 const mathOperations = (arrayOfNumbers) => {
+
+    console.log("array-numbers", arrayOfNumbers)
+    const divisao = binaryDivision(arrayOfNumbers[0], arrayOfNumbers[1])
+    console.log("div", divisao)
 
     if (
         operator.includes("+") 
@@ -168,12 +181,11 @@ const mathOperations = (arrayOfNumbers) => {
                 result = "///";
             }
         } else {
-            result = "barra"
+            result = binaryDivision(arrayOfNumbers[0], arrayOfNumbers[1])
         }
     }
 }
 
-console.log(">>>", twosComplement("11111011"))
 
 const operationResult = () => {
     splitInputNumbers(inputNumber);
