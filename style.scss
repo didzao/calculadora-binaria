@@ -97,41 +97,42 @@ body {
 }
 
 .menuContainer {
+left: 25px;
 display: flex;
-flex-direction: column;
+bottom: 25px;
 row-gap: 10px;
-justify-content: space-between;
 height: 200px;
 position: absolute;
-bottom: 25px;
-left: 25px;
+flex-direction: column;
+justify-content: space-between;
+
   .menuButton {
-    
-    display: inline-block;
-    height: 60px;
-    width: 60px;
     float: left;
-    overflow: hidden;
+    width: 60px;
+    height: 60px;
     margin: 0 5px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50px;
+    display: inline-block;
     text-decoration: none;
     background-color: #818384;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0px 5px 5px rgba($color: #fff, $alpha: 0.1);
     transition: all 0.3s ease-out;
+    box-shadow: 0px 5px 5px rgba($color: #fff, $alpha: 0.1);
 
     .icon {
-      display: inline-block;
-      text-align: center;
-      height: 60px;
       width: 60px;
-      border-radius: 50%;
-      box-sizing: border-box;
+      height: 60px;
       line-height: 60px;
+      text-align: center;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
       transition: all 0.3 ease-out;
 
       i {
         font-size: 25px;
+        color: #D8BFD8;
         line-height: 60px;
         transition: all 0.3 ease-out;
       }
