@@ -12,8 +12,6 @@ const keys = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "C", "=", "«",
 ];
 
-const teste = ["a", "b", "c"]
-
 const clean = () => {
     result = undefined
     inputNumber.innerHTML = "";
@@ -29,8 +27,6 @@ const concatNumber = (value) => {
         inputNumber.innerHTML += value;
     } else {
         inputNumber.innerHTML += value;
-        //displayBinary.innerHTML += (value).toString(2);
-        // por disable nos botões quando for identificado um *, + ou / ou -,-
     }
 }
 
@@ -57,14 +53,13 @@ const addZeros = (binaryStr) => {
 
 const binarySum = (firstValue, secondValue) => {
     let sumResult = "";
-    carry = 0;
+    let carry = 0;
 
     let firstBinary = firstValue;
     let secondBinary = secondValue;
 
     if (typeof firstValue === "number") {
         firstBinary = addZeros(parseInt(firstValue).toString(2));
-
     }
 
     if (typeof secondValue === "number") {
@@ -72,6 +67,7 @@ const binarySum = (firstValue, secondValue) => {
     }
 
     while (firstBinary || secondBinary || carry) {
+
         let sum = +firstBinary.slice(-1) + +secondBinary.slice(-1) + carry;
 
         if (sum > 1) {
@@ -117,7 +113,7 @@ const twosComplement = (value) => {
     return twosComplementValue;
 }
 
-const isBiggerThan255 = (currentValue) => currentValue > 255;
+const isBiggerThan255 = (value) => value > 255;
 
 const binaryDivision = (firstValue, secondValue) => {
     let i = 0;
@@ -133,8 +129,8 @@ const binaryMultiplication = (firstValue, secondValue) => {
     let i = 0;
     let multiplicationResult = 0;
 
-    while (i < firstValue) {
-        multiplicationResult = binarySum(multiplicationResult, secondValue)
+    while (i < secondValue) {
+        multiplicationResult = binarySum(multiplicationResult, firstValue);
         i++;
     }
     return multiplicationResult;
@@ -164,9 +160,9 @@ const mathOperations = (arrayOfNumbers) => {
     } else if (operator.includes("*")) {
         if (operator.includes("-")) {
             if (operator.indexOf("-") === 1) {
-                result = twosComplement(binaryMultiplication(arrayOfNumbers[0], arrayOfNumbers[2])); // aqui
+                result = twosComplement(binaryMultiplication(arrayOfNumbers[0], arrayOfNumbers[2]));
             } else if (operator.length === 2 && operator.indexOf("-") === 0) {
-                result = twosComplement(binaryMultiplication(arrayOfNumbers[1], arrayOfNumbers[2])); // aqui
+                result = twosComplement(binaryMultiplication(arrayOfNumbers[1], arrayOfNumbers[2]));
             } else if (operator.length === 3 && operator.indexOf("*") === 1) {
                 result = binaryMultiplication(arrayOfNumbers[1], arrayOfNumbers[3]);
             }
@@ -176,9 +172,9 @@ const mathOperations = (arrayOfNumbers) => {
     } else if (operator.includes("/")) {
         if (operator.includes("-")) {
             if (operator.indexOf("-") === 1) {
-                result = twosComplement(binaryDivision(arrayOfNumbers[0], arrayOfNumbers[2])); // aqui
+                result = twosComplement(binaryDivision(arrayOfNumbers[0], arrayOfNumbers[2]));
             } else if (operator.length === 2 && operator.indexOf("-") === 0) {
-                result = twosComplement(binaryDivision(arrayOfNumbers[1], arrayOfNumbers[2])); // aqui
+                result = twosComplement(binaryDivision(arrayOfNumbers[1], arrayOfNumbers[2]));
             } else if (operator.length === 3 && operator.indexOf("/") === 1) {
                 result = binaryDivision(arrayOfNumbers[1], arrayOfNumbers[3]);
             }
@@ -194,13 +190,14 @@ const operationResult = () => {
     splitInputNumbers(inputNumber);
 
     const arrayOfNumbers = splitNumbers.map(Number);
-
+    console.log("split", splitNumbers)
+    console.log("oop", operator)
     if (
         inputNumber.textContent.includes("/0")
         || inputNumber.textContent.includes("/-0")
         || inputNumber.textContent.includes("/+0")
         || inputNumber.textContent === ""
-        || splitInputNumbers(inputNumber) === undefined
+        //|| splitInputNumbers(inputNumber) === undefined
     ) {
         decimalResult = result = "Erro!";
     } else if (arrayOfNumbers.some(isBiggerThan255)) {
@@ -240,7 +237,6 @@ keys.forEach(key => {
     const keyboardButton = document.createElement("button");
     keyboardButton.textContent = key;
     keyboardButton.setAttribute("key", key);
-    // keyboardButton.setAttribute("class", "button" + key);
     keyboardButton.addEventListener("click", () => handleClick(key));
     keyboard.append(keyboardButton);
 });
