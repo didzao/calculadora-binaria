@@ -230,6 +230,22 @@ body {
   opacity: 0.7;
 }
 
+.option {
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.buttonLabel {
+  font-size: 11px;
+}
+
 @-webkit-keyframes come-in {
   0% {
     -webkit-transform: translatey(100px);

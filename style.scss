@@ -179,9 +179,6 @@ body {
           animation: come-in 0.4s forwards 0.6s;
 }
 
-
-
-
 .menuOptions {
   flex: 1;
   width: 300px;
@@ -201,6 +198,17 @@ body {
   &:active {
     opacity: 0.7;
   }
+}
+
+.option {
+  right: 0;
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+}
+
+.buttonLabel {
+  font-size: 11px;
 }
 
 // .menuContainer .action:nth-child(1) {
