@@ -5,8 +5,7 @@ const displayBinary = document.querySelector(".displayBinaryValue");
 let result;
 let operator;
 let splitNumbers;
-
-//mudar entrada para resultado quando clica no =
+let overflow = false;
 
 const keys = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "C", "=", "«",
@@ -83,12 +82,14 @@ const binarySum = (firstValue, secondValue) => {
         secondBinary = secondBinary.slice(0, -1);
     }
 
+    if (parseInt(sumResult, 2) >= 256) {
+        overflow = true;
+    }
+
     return sumResult.substring(sumResult.length - 8);
 }
 
 const flipBit = (bit) => bit === '1' ? '0' : '1';
-
-// const signBit = (b) => b.charAt(0);
 
 const twosComplement = (value) => {
 
@@ -178,33 +179,63 @@ const mathOperations = (arrayOfNumbers) => {
     }
 }
 
+const errorAlert = (message) => {
+    Swal.fire(
+        {
+            title: 'Opa!',
+            text: message,
+            icon: 'error',
+        }
+    )
+}
+
+const infoAlert = () => {
+    Swal.fire(
+        {
+            width: 800,
+            title: 'Informações',
+            text: "1 - Essa calculadora opera em 8 bits, ou seja, ela só recebe e retorna valores até 255. "
+                + "Então, sempre que as situações acima acontecerem, será retornado um erro. Portanto, não se assuste! \n"
+                + "2 - Leia o relatório, para saber mais sobre as funções usadas nesse projeto.",
+            icon: 'info',
+            //footer: '<a href="/reportPage.html">Deseja saber mais? Leia o relatório</a>'
+        }
+    )
+}
+
 const operationResult = () => {
     let decimalResult;
 
     splitInputNumbers(inputNumber);
 
     const arrayOfNumbers = splitNumbers.map(Number);
-    console.log("split", splitNumbers)
-    console.log("oop", operator)
+
     if (
         inputNumber.textContent.includes("/0")
         || inputNumber.textContent.includes("/-0")
         || inputNumber.textContent.includes("/+0")
         || inputNumber.textContent === ""
-        //|| splitInputNumbers(inputNumber) === undefined
     ) {
         decimalResult = result = "Erro!";
+        errorAlert("Parece que você está tentando cometer o pecado de dividir por 0 "
+            + "ou então não inseriu nenhum valor!");
     } else if (arrayOfNumbers.some(isBiggerThan255)) {
         decimalResult = result = "Erro!";
+        errorAlert("Parece que você inseriu um valor maior do 255!");
     }
     else {
         mathOperations(arrayOfNumbers);
     }
 
-    if (result !== "Erro!") {
-        decimalResult = parseInt(result, 2);
+    if (overflow) {
+        result = "Erro!";
+        decimalResult = result;
+        errorAlert("Pelo visto tivemos um overflow! Tente novamente!")
     }
 
+    if (result !== "Erro!" && !overflow) {
+        decimalResult = parseInt(result, 2);
+    }
 
     document.getElementById("displayBinary").innerHTML = result;
     document.getElementById("displayNumber").innerHTML = decimalResult;
@@ -234,6 +265,8 @@ keys.forEach(key => {
     keyboardButton.addEventListener("click", () => handleClick(key));
     keyboard.append(keyboardButton);
 });
+
+
 
 
 
