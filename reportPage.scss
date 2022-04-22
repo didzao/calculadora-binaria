@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    color: #ffffff;
+    font-family: 'Press Start 2P', "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+  
+body {
+    background-color: #121213;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+  }
+
+.titleContainer {
+    width: 100%;
+    text-align: center;
+    border-bottom: solid 1px #3a3a3c;
+}
+
+.pdfContainer {
+    width: 100vw;
+    height: 100vh;
+    margin-top: 10px;
+}
+
+.menuContainer {
+    left: 25px;
+    display: flex;
+    bottom: 25px;
+    row-gap: 10px;
+    height: 200px;
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    .menuButton {
+        float: left;
+        width: 60px;
+        height: 60px;
+        margin: 0 5px;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 50px;
+        display: inline-block;
+        text-decoration: none;
+        background-color: #818384;
+        transition: all 0.3s ease-out;
+        box-shadow: 0px 5px 5px rgba($color: #fff, $alpha: 0.1);
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            transition: all 0.3 ease-out;
+
+            i {
+                font-size: 25px;
+                color: #D8BFD8;
+                line-height: 60px;
+                transition: all 0.3 ease-out;
+            }
+        }
+
+        span {
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 60px;
+            margin-left: 10px;
+            transition: all 0.3 ease-out;
+        }
+
+        &:nth-child(1) {
+            span {
+            color: #D8BFD8;
+            }
+        }
+
+        &:nth-child(2) {
+            span {
+            color: #D8BFD8;
+            }
+        }
+
+        &:nth-child(3) {
+            span {
+            color: #D8BFD8;
+            }
+        }
+
+        &:hover {
+            width: 200px;
+
+            i {
+            color: #818384;
+            }
+        }
+
+        &:nth-child(1):hover {
+            .icon {
+            background-color: #D8BFD8;
+            }
+        }
+
+        &:nth-child(2):hover {
+            .icon {
+            background-color: #D8BFD8;
+            }
+        }
+
+        &:nth-child(3):hover {
+            .icon {
+            background-color: #D8BFD8;
+            }
+        }
+    }
+}

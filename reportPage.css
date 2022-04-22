@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+* {
+  color: #ffffff;
+  font-family: 'Press Start 2P', "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  background-color: #121213;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.titleContainer {
+  width: 100%;
+  text-align: center;
+  border-bottom: solid 1px #3a3a3c;
+}
+
+.pdfContainer {
+  width: 100vw;
+  height: 100vh;
+  margin-top: 10px;
+}
+
+.menuContainer {
+  left: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  bottom: 25px;
+  row-gap: 10px;
+  height: 200px;
+  position: absolute;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.menuContainer .menuButton {
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin: 0 5px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 50px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #818384;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-box-shadow: 0px 5px 5px rgba(255, 255, 255, 0.1);
+          box-shadow: 0px 5px 5px rgba(255, 255, 255, 0.1);
+}
+
+.menuContainer .menuButton .icon {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 50%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all 0.3 ease-out;
+  transition: all 0.3 ease-out;
+}
+
+.menuContainer .menuButton .icon i {
+  font-size: 25px;
+  color: #D8BFD8;
+  line-height: 60px;
+  -webkit-transition: all 0.3 ease-out;
+  transition: all 0.3 ease-out;
+}
+
+.menuContainer .menuButton span {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 60px;
+  margin-left: 10px;
+  -webkit-transition: all 0.3 ease-out;
+  transition: all 0.3 ease-out;
+}
+
+.menuContainer .menuButton:nth-child(1) span {
+  color: #D8BFD8;
+}
+
+.menuContainer .menuButton:nth-child(2) span {
+  color: #D8BFD8;
+}
+
+.menuContainer .menuButton:nth-child(3) span {
+  color: #D8BFD8;
+}
+
+.menuContainer .menuButton:hover {
+  width: 200px;
+}
+
+.menuContainer .menuButton:hover i {
+  color: #818384;
+}
+
+.menuContainer .menuButton:nth-child(1):hover .icon {
+  background-color: #D8BFD8;
+}
+
+.menuContainer .menuButton:nth-child(2):hover .icon {
+  background-color: #D8BFD8;
+}
+
+.menuContainer .menuButton:nth-child(3):hover .icon {
+  background-color: #D8BFD8;
+}
+/*# sourceMappingURL=reportPage.css.map */
