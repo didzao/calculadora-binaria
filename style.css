@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 * {
   color: #ffffff;
-  font-family: 'Press Start 2P', "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Press Start 2P", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 body {
@@ -53,7 +53,7 @@ body {
   height: 60px;
   overflow: hidden;
   margin-bottom: 40px;
-  border-bottom: 2px solid #D8BFD8;
+  border-bottom: 2px solid #d8bfd8;
 }
 
 .displayContainer p, .displayBinaryContainer p {
@@ -99,7 +99,7 @@ body {
 }
 
 .keyboardContainer button:active {
-  background-color: #D8BFD8;
+  background-color: #d8bfd8;
 }
 
 .keyboardContainer button:disabled {
@@ -160,7 +160,7 @@ body {
 
 .menuContainer .menuButton .icon i {
   font-size: 25px;
-  color: #D8BFD8;
+  color: #d8bfd8;
   line-height: 60px;
   -webkit-transition: all 0.3 ease-out;
   transition: all 0.3 ease-out;
@@ -176,34 +176,42 @@ body {
 }
 
 .menuContainer .menuButton:nth-child(1) span {
-  color: #D8BFD8;
+  color: #d8bfd8;
 }
 
 .menuContainer .menuButton:nth-child(2) span {
-  color: #D8BFD8;
+  color: #d8bfd8;
 }
 
 .menuContainer .menuButton:nth-child(3) span {
-  color: #D8BFD8;
-}
-
-.menuContainer .menuButton:hover {
-  width: 200px;
+  color: #d8bfd8;
 }
 
 .menuContainer .menuButton:hover i {
   color: #818384;
 }
 
+.menuContainer .menuButton:nth-child(1):hover {
+  width: 210px;
+}
+
 .menuContainer .menuButton:nth-child(1):hover .icon {
-  background-color: #D8BFD8;
+  background-color: #d8bfd8;
+}
+
+.menuContainer .menuButton:nth-child(2):hover {
+  width: 220px;
 }
 
 .menuContainer .menuButton:nth-child(2):hover .icon {
-  background-color: #D8BFD8;
+  background-color: #d8bfd8;
+}
+
+.menuContainer .menuButton:nth-child(3):hover {
+  width: 180px;
 }
 
 .menuContainer .menuButton:nth-child(3):hover .icon {
-  background-color: #D8BFD8;
+  background-color: #d8bfd8;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,14 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-$padding: 1rem;
-$radius: 6rem;
-$size: 100px;
-$angle: 0deg;
-$factor: 0;
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 * {
   color: #ffffff;
-  font-family: 'Press Start 2P', "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Press Start 2P", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 body {
@@ -24,7 +18,7 @@ body {
 }
 
 .titleContainer {
- // width: 510px;
+  // width: 510px;
   width: 100%;
   text-align: center;
   border-bottom: solid 1px #3a3a3c;
@@ -43,7 +37,7 @@ body {
   height: 60px;
   overflow: hidden;
   margin-bottom: 40px;
-  border-bottom: 2px solid #D8BFD8;
+  border-bottom: 2px solid #d8bfd8;
 
   p {
     text-align: right;
@@ -51,10 +45,9 @@ body {
 
   span {
     font-size: 12px;
-    margin-bottom: 10px
+    margin-bottom: 10px;
   }
 }
-
 
 .displayBinaryContainer {
   @extend .displayContainer;
@@ -77,14 +70,14 @@ body {
   border: none;
   border-radius: 4px;
   //background-color: #D8BFD8;
-   background-color: #818384;
+  background-color: #818384;
 
   &:hover {
     opacity: 0.7;
   }
 
   &:active {
-    background-color: #D8BFD8;
+    background-color: #d8bfd8;
   }
 
   &:disabled {
@@ -97,14 +90,14 @@ body {
 }
 
 .menuContainer {
-left: 25px;
-display: flex;
-bottom: 25px;
-row-gap: 10px;
-height: 200px;
-position: absolute;
-flex-direction: column;
-justify-content: space-between;
+  left: 25px;
+  display: flex;
+  bottom: 25px;
+  row-gap: 10px;
+  height: 200px;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
 
   .menuButton {
     float: left;
@@ -132,7 +125,7 @@ justify-content: space-between;
 
       i {
         font-size: 25px;
-        color: #D8BFD8;
+        color: #d8bfd8;
         line-height: 60px;
         transition: all 0.3 ease-out;
       }
@@ -148,49 +141,47 @@ justify-content: space-between;
 
     &:nth-child(1) {
       span {
-        color: #D8BFD8;
+        color: #d8bfd8;
       }
     }
 
     &:nth-child(2) {
       span {
-        color: #D8BFD8;
+        color: #d8bfd8;
       }
     }
 
     &:nth-child(3) {
       span {
-        color: #D8BFD8;
+        color: #d8bfd8;
       }
     }
 
     &:hover {
-      width: 200px;
-
       i {
         color: #818384;
       }
     }
 
     &:nth-child(1):hover {
+      width: 210px;
       .icon {
-        background-color: #D8BFD8;
+        background-color: #d8bfd8;
       }
     }
 
     &:nth-child(2):hover {
+      width: 220px;
       .icon {
-        background-color: #D8BFD8;
+        background-color: #d8bfd8;
       }
     }
 
     &:nth-child(3):hover {
+      width: 180px;
       .icon {
-        background-color: #D8BFD8;
+        background-color: #d8bfd8;
       }
     }
   }
 }
-
-
-
