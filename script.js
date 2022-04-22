@@ -90,12 +90,6 @@ const flipBit = (bit) => bit === '1' ? '0' : '1';
 
 // const signBit = (b) => b.charAt(0);
 
-const convertBinaryToDecimal = binary => {
-    return (
-        parseInt(binary.length >= 8 && binary[0] === "1" ? binary.padStart(32, "1") : binary.padStart(32, "0"), 2) >> 0
-    )
-};
-
 const twosComplement = (value) => {
 
     let twosComplementValue = '';
@@ -208,7 +202,7 @@ const operationResult = () => {
     }
 
     if (result !== "Erro!") {
-        decimalResult = convertBinaryToDecimal(result);
+        decimalResult = parseInt(result, 2);
     }
 
 
