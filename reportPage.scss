@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 * {
     color: #ffffff;
-    font-family: 'Press Start 2P', "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    font-family: "Press Start 2P", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
-  
+
 body {
     background-color: #121213;
 }
@@ -14,7 +14,7 @@ body {
     width: 100vw;
     height: 100vh;
     flex-direction: column;
-  }
+}
 
 .titleContainer {
     width: 100%;
@@ -37,7 +37,7 @@ body {
     position: absolute;
     flex-direction: column;
     justify-content: space-between;
-    
+
     .menuButton {
         float: left;
         width: 60px;
@@ -64,7 +64,7 @@ body {
 
             i {
                 font-size: 25px;
-                color: #D8BFD8;
+                color: #d8bfd8;
                 line-height: 60px;
                 transition: all 0.3 ease-out;
             }
@@ -80,45 +80,46 @@ body {
 
         &:nth-child(1) {
             span {
-            color: #D8BFD8;
+                color: #d8bfd8;
             }
         }
 
         &:nth-child(2) {
             span {
-            color: #D8BFD8;
+                color: #d8bfd8;
             }
         }
 
         &:nth-child(3) {
             span {
-            color: #D8BFD8;
+                color: #d8bfd8;
             }
         }
 
         &:hover {
-            width: 200px;
-
             i {
-            color: #818384;
+                color: #818384;
             }
         }
 
         &:nth-child(1):hover {
+            width: 180px;
             .icon {
-            background-color: #D8BFD8;
+                background-color: #d8bfd8;
             }
         }
 
         &:nth-child(2):hover {
+            width: 220px;
             .icon {
-            background-color: #D8BFD8;
+                background-color: #d8bfd8;
             }
         }
 
         &:nth-child(3):hover {
+            width: 180px;
             .icon {
-            background-color: #D8BFD8;
+                background-color: #d8bfd8;
             }
         }
     }
