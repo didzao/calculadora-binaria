@@ -12,12 +12,14 @@ const keys = [
 ];
 
 const clean = () => {
-    result = undefined
+    overflow = false;
+    result = undefined;
     inputNumber.innerHTML = "";
     displayBinary.innerHTML = "";
 }
 
 const concatNumber = (value) => {
+    overflow = false;
     if (inputNumber.textContent == "Erro!") {
         clean();
         inputNumber.innerHTML += value;
@@ -109,6 +111,8 @@ const twosComplement = (value) => {
 }
 
 const isBiggerThan255 = (value) => value > 255;
+
+const isBiggerThan63 = (value) => value > 63;
 
 const binaryDivision = (firstValue, secondValue) => {
     let i = 0;
@@ -203,6 +207,12 @@ const infoAlert = () => {
     )
 }
 
+const convertBinaryToDecimal = binary => {
+    return (
+        parseInt(binary.length >= 8 && binary[0] === "1" ? binary.padStart(32, "1") : binary.padStart(32, "0"), 2) >> 0
+    )
+};
+
 const operationResult = () => {
     let decimalResult;
 
@@ -234,6 +244,10 @@ const operationResult = () => {
     }
 
     if (result !== "Erro!" && !overflow) {
+        decimalResult = convertBinaryToDecimal(result);
+    }
+
+    if (result !== "Erro!" && !overflow && arrayOfNumbers.some(isBiggerThan63)) {
         decimalResult = parseInt(result, 2);
     }
 
