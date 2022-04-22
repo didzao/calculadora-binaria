@@ -189,6 +189,7 @@ const errorAlert = (message) => {
             title: 'Opa!',
             text: message,
             icon: 'error',
+            backdrop: `rgba(216,191,216, 0.3)`
         }
     )
 }
@@ -196,13 +197,9 @@ const errorAlert = (message) => {
 const infoAlert = () => {
     Swal.fire(
         {
-            width: 800,
-            title: 'Informações',
-            text: "1 - Essa calculadora opera em 8 bits, ou seja, ela só recebe e retorna valores até 255. "
-                + "Então, sempre que as situações acima acontecerem, será retornado um erro. Portanto, não se assuste! \n"
-                + "2 - Leia o relatório, para saber mais sobre as funções usadas nesse projeto.",
-            icon: 'info',
-            //footer: '<a href="/reportPage.html">Deseja saber mais? Leia o relatório</a>'
+            width: 500,
+            imageUrl: './assets/infos.png',
+            backdrop: `rgba(216,191,216,0.3)`
         }
     )
 }
