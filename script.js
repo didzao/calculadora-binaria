@@ -212,6 +212,8 @@ const infoAlert = () => {
         {
             width: 500,
             imageUrl: '../assets/infos.png',
+            background: "#121213",
+            confirmButtonColor: '#E3378D',
             backdrop: `rgba(216,191,216,0.3)`
         }
     )
