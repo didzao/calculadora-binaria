@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 * {
-  color: #ffffff;
+  color: #f5f5f5;
   font-family: "Press Start 2P", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 .titleContainer h1 {
-  color: #ffffff;
+  color: #f5f5f5;
 }
 
 .content {
@@ -95,16 +95,20 @@ body {
   width: 43px;
   height: 58px;
   border: none;
+  color: #121213;
   border-radius: 4px;
-  background-color: #818384;
+  background-color: #f5f5f5;
 }
 
 .keyboardContainer button:hover {
-  opacity: 0.7;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-box-shadow: 4px 2px 0 #e3378d, 6px 4px 0 #3cbed0;
+          box-shadow: 4px 2px 0 #e3378d, 6px 4px 0 #3cbed0;
 }
 
 .keyboardContainer button:active {
-  background-color: #d8bfd8;
+  opacity: 0.7;
 }
 
 .keyboardContainer button:disabled {
@@ -113,6 +117,10 @@ body {
 
 .keyboardContainer button:nth-child(16) {
   width: 195px;
+}
+
+.keyboardContainer button:nth-child(16):active {
+  background-color: #3cbed0;
 }
 
 .menuContainer {
@@ -143,11 +151,11 @@ body {
   border-radius: 50px;
   display: inline-block;
   text-decoration: none;
-  background-color: #818384;
+  background-color: #f5f5f5;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  -webkit-box-shadow: 0px 5px 5px rgba(255, 255, 255, 0.1);
-          box-shadow: 0px 5px 5px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: 0px 5px 0px #3cbed0;
+          box-shadow: 0px 5px 0px #3cbed0;
 }
 
 .menuContainer .menuButton .icon {
@@ -165,7 +173,7 @@ body {
 
 .menuContainer .menuButton .icon i {
   font-size: 25px;
-  color: #d8bfd8;
+  color: #3cbed0;
   line-height: 60px;
   -webkit-transition: all 0.3 ease-out;
   transition: all 0.3 ease-out;
@@ -176,47 +184,32 @@ body {
   font-weight: 500;
   line-height: 60px;
   margin-left: 10px;
+  color: #f5f5f5;
   -webkit-transition: all 0.3 ease-out;
   transition: all 0.3 ease-out;
 }
 
-.menuContainer .menuButton:nth-child(1) span {
-  color: #d8bfd8;
-}
-
-.menuContainer .menuButton:nth-child(2) span {
-  color: #d8bfd8;
-}
-
-.menuContainer .menuButton:nth-child(3) span {
-  color: #d8bfd8;
+.menuContainer .menuButton:hover {
+  background-color: #e3378d;
 }
 
 .menuContainer .menuButton:hover i {
-  color: #818384;
+  color: #e3378d;
+}
+
+.menuContainer .menuButton:hover .icon {
+  background-color: #f5f5f5;
 }
 
 .menuContainer .menuButton:nth-child(1):hover {
   width: 210px;
 }
 
-.menuContainer .menuButton:nth-child(1):hover .icon {
-  background-color: #d8bfd8;
-}
-
 .menuContainer .menuButton:nth-child(2):hover {
   width: 220px;
 }
 
-.menuContainer .menuButton:nth-child(2):hover .icon {
-  background-color: #d8bfd8;
-}
-
 .menuContainer .menuButton:nth-child(3):hover {
   width: 180px;
-}
-
-.menuContainer .menuButton:nth-child(3):hover .icon {
-  background-color: #d8bfd8;
 }
 /*# sourceMappingURL=style.css.map */

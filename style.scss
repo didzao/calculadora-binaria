@@ -3,7 +3,7 @@
 $grey-color: #818384;
 $pink-color: #e3378d;
 $blue-color: #3cbed0;
-$white-color: #ffffff;
+$white-color: #f5f5f5;
 $background-color: #121213;
 
 * {
@@ -13,7 +13,6 @@ $background-color: #121213;
 
 body {
   background-color: $background-color;
-  //background-color: #B0DFE7;
 }
 
 .container {
@@ -25,16 +24,11 @@ body {
 }
 
 .titleContainer {
-  // width: 510px;
+
   width: 100%;
   text-align: center;
   border-bottom: solid 1px #3a3a3c;
-  //text-shadow: 3px 3px 1px #00FFFF;
-  //text-shadow: -0.5em 0 yellow,  0.5em 0 cyan;
-  //text-shadow: 4px 2px 0 #e3378d, 8px 4px 0 #4E2561;
-  //text-shadow: 4px 2px 0 #e3378d, 8px 4px 0 #0ffbf9;
   text-shadow: 4px 2px 0 $pink-color, 6px 4px 0 $blue-color;
- // text-shadow: 1px -3px 0 #fd00fb, -3px 1px 0 #0ffbf9;
 
   h1 {
     color: $white-color;
@@ -79,32 +73,38 @@ body {
   user-select: none;
   justify-content: center;
   //background-color: #D8BFD8;
-}
 
-.keyboardContainer button {
-  margin: 4px;
-  width: 43px;
-  height: 58px;
-  border: none;
-  border-radius: 4px;
-  //background-color: #D8BFD8;
-  background-color: $grey-color;
-
-  &:hover {
-    opacity: 0.7;
+  button {
+    margin: 4px;
+    width: 43px;
+    height: 58px;
+    border: none;
+    color: $background-color;
+    border-radius: 4px;
+    background-color: $white-color;
+  
+    &:hover {
+      transition: all 0.3s ease-out;
+      box-shadow: 4px 2px 0 $pink-color, 6px 4px 0 $blue-color;
+    }
+  
+    &:active {
+      opacity: 0.7;
+    }
+  
+    &:disabled {
+      opacity: 0.5;
+    }
   }
 
-  &:active {
-    background-color: #d8bfd8;
-  }
+  button:nth-child(16) {
+    width: 195px;
+    //background-color: $pink-color;
 
-  &:disabled {
-    opacity: 0.5;
+    &:active {
+      background-color: $blue-color;
+    }
   }
-}
-
-.keyboardContainer button:nth-child(16) {
-  width: 195px;
 }
 
 .menuContainer {
@@ -127,9 +127,9 @@ body {
     border-radius: 50px;
     display: inline-block;
     text-decoration: none;
-    background-color: #818384;
+    background-color: $white-color;
     transition: all 0.3s ease-out;
-    box-shadow: 0px 5px 5px rgba($color: #fff, $alpha: 0.1);
+    box-shadow: 0px 5px 0px $blue-color;
 
     .icon {
       width: 60px;
@@ -143,7 +143,7 @@ body {
 
       i {
         font-size: 25px;
-        color: #d8bfd8;
+        color: $blue-color;
         line-height: 60px;
         transition: all 0.3 ease-out;
       }
@@ -154,52 +154,31 @@ body {
       font-weight: 500;
       line-height: 60px;
       margin-left: 10px;
+      color: $white-color;
       transition: all 0.3 ease-out;
     }
 
-    &:nth-child(1) {
-      span {
-        color: #d8bfd8;
-      }
-    }
-
-    &:nth-child(2) {
-      span {
-        color: #d8bfd8;
-      }
-    }
-
-    &:nth-child(3) {
-      span {
-        color: #d8bfd8;
-      }
-    }
 
     &:hover {
+      background-color: $pink-color;
       i {
-        color: #818384;
+        color: $pink-color;
+      }
+      .icon {
+        background-color: $white-color;
       }
     }
 
     &:nth-child(1):hover {
       width: 210px;
-      .icon {
-        background-color: #d8bfd8;
-      }
     }
 
     &:nth-child(2):hover {
       width: 220px;
-      .icon {
-        background-color: #d8bfd8;
-      }
     }
 
     &:nth-child(3):hover {
       width: 180px;
-      .icon {
-        background-color: #d8bfd8;
-      }
     }
   }
 }
