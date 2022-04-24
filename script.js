@@ -52,6 +52,12 @@ const addZeros = (binaryStr) => {
     return "00000000".substring(binaryStr.length) + binaryStr;
 }
 
+const convertBinaryToDecimal = (binary) => {
+    return binary.split('').reverse().reduce((x, y, i) => {
+        return (y === '1') ? x + Math.pow(2, i) : x;
+    }, 0);
+}
+
 const binarySum = (firstValue, secondValue) => {
     let sumResult = "";
     let carry = 0;
@@ -84,7 +90,7 @@ const binarySum = (firstValue, secondValue) => {
         secondBinary = secondBinary.slice(0, -1);
     }
 
-    if (parseInt(sumResult, 2) >= 256) {
+    if (convertBinaryToDecimal(sumResult) >= 256 && operator.includes("*")) {
         overflow = true;
     }
 
@@ -111,8 +117,6 @@ const twosComplement = (value) => {
 }
 
 const isBiggerThan255 = (value) => value > 255;
-
-const isBiggerThan63 = (value) => value > 63;
 
 const binaryDivision = (firstValue, secondValue) => {
     let i = 0;
@@ -204,12 +208,6 @@ const infoAlert = () => {
     )
 }
 
-const convertBinaryToDecimal = binary => {
-    return (
-        parseInt(binary.length >= 8 && binary[0] === "1" ? binary.padStart(32, "1") : binary.padStart(32, "0"), 2) >> 0
-    )
-};
-
 const operationResult = () => {
     let decimalResult;
 
@@ -242,10 +240,6 @@ const operationResult = () => {
 
     if (result !== "Erro!" && !overflow) {
         decimalResult = convertBinaryToDecimal(result);
-    }
-
-    if (result !== "Erro!" && !overflow && arrayOfNumbers.some(isBiggerThan63)) {
-        decimalResult = parseInt(result, 2);
     }
 
     document.getElementById("displayBinary").innerHTML = result;
