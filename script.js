@@ -3,8 +3,6 @@ const inputNumber = document.querySelector(".displayValue");
 const displayBinary = document.querySelector(".displayBinaryValue");
 const inputLabel = document.getElementById("input");
 
-console.log("aa", inputLabel);
-
 let result;
 let operator;
 let splitNumbers;
@@ -202,7 +200,8 @@ const errorAlert = (message) => {
             title: 'Opa!',
             text: message,
             icon: 'error',
-            backdrop: `rgba(216,191,216, 0.3)`
+            background: "#f5f5f5",
+            backdrop: `rgba(18, 18, 19, 0.3)`
         }
     )
 }
@@ -214,7 +213,7 @@ const infoAlert = () => {
             imageUrl: '../assets/infos.png',
             background: "#121213",
             confirmButtonColor: '#E3378D',
-            backdrop: `rgba(216,191,216,0.3)`
+            backdrop: `rgba(18, 18, 19, 0.3)`
         }
     )
 }
@@ -227,19 +226,20 @@ const operationResult = () => {
     const arrayOfNumbers = splitNumbers.map(Number);
 
     if (
-        inputNumber.textContent.includes("/0")
-        || inputNumber.textContent.includes("/-0")
-        || inputNumber.textContent.includes("/+0")
-        || inputNumber.textContent === ""
+        inputNumber.textContent.includes("/0") || inputNumber.textContent.includes("/-0") || inputNumber.textContent.includes("/+0")
     ) {
         decimalResult = result = "Erro!";
-        errorAlert("Parece que você está tentando cometer o pecado de dividir por 0 "
-            + "ou então não inseriu nenhum valor!");
+        errorAlert("Parece que você está tentando cometer o pecado de dividir por 0!");
+    } else if (inputNumber.textContent === "") {
+        errorAlert("Parece que você não inseriu nenhum valor!");
+    } else if (
+        inputNumber.textContent.match((/[\+\-\*\/]/)) && !inputNumber.textContent.match(/[0-9]/)
+    ) {
+        errorAlert("Parece que você apenas inseriu os operadores e esqueceu de selecionar os valores!");
     } else if (arrayOfNumbers.some(isBiggerThan255)) {
         decimalResult = result = "Erro!";
         errorAlert("Parece que você inseriu um valor maior do 255!");
-    }
-    else {
+    } else {
         mathOperations(arrayOfNumbers);
     }
 
