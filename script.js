@@ -1,6 +1,9 @@
 const keyboard = document.querySelector(".keyboardContainer");
 const inputNumber = document.querySelector(".displayValue");
 const displayBinary = document.querySelector(".displayBinaryValue");
+const inputLabel = document.getElementById("input");
+
+console.log("aa", inputLabel);
 
 let result;
 let operator;
@@ -11,7 +14,12 @@ const keys = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "C", "=", "«",
 ];
 
+const resetInputLabel = () => {
+    inputLabel.innerText = "Digite os valores";
+}
+
 const clean = () => {
+    resetInputLabel();
     overflow = false;
     result = undefined;
     inputNumber.innerHTML = "";
@@ -20,6 +28,7 @@ const clean = () => {
 
 const concatNumber = (value) => {
     overflow = false;
+    resetInputLabel();
     if (inputNumber.textContent == "Erro!") {
         clean();
         inputNumber.innerHTML += value;
@@ -38,6 +47,7 @@ const backspace = () => {
         } else {
             let displayed = document.getElementById("displayNumber").innerHTML;
             inputNumber.innerHTML = displayed.substring(0, displayed.length - 1);
+            resetInputLabel();
         }
     }
 }
@@ -242,6 +252,7 @@ const operationResult = () => {
         decimalResult = convertBinaryToDecimal(result);
     }
 
+    inputLabel.innerText = "Resultado decimal";
     document.getElementById("displayBinary").innerHTML = result;
     document.getElementById("displayNumber").innerHTML = decimalResult;
 }
