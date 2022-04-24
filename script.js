@@ -47,7 +47,6 @@ const backspace = () => {
         } else {
             let displayed = document.getElementById("displayNumber").innerHTML;
             inputNumber.innerHTML = displayed.substring(0, displayed.length - 1);
-            resetInputLabel();
         }
     }
 }
