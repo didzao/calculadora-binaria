@@ -119,10 +119,6 @@ body {
   width: 195px;
 }
 
-.keyboardContainer button:nth-child(16):active {
-  background-color: #3cbed0;
-}
-
 .menuContainer {
   left: 25px;
   display: -webkit-box;

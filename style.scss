@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
-$grey-color: #818384;
 $pink-color: #e3378d;
 $blue-color: #3cbed0;
 $white-color: #f5f5f5;
@@ -72,7 +71,6 @@ body {
   flex-wrap: wrap;
   user-select: none;
   justify-content: center;
-  //background-color: #D8BFD8;
 
   button {
     margin: 4px;
@@ -99,11 +97,6 @@ body {
 
   button:nth-child(16) {
     width: 195px;
-    //background-color: $pink-color;
-
-    &:active {
-      background-color: $blue-color;
-    }
   }
 }
 
