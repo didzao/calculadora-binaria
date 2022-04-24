@@ -1,12 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
+$grey-color: #818384;
+$pink-color: #e3378d;
+$blue-color: #3cbed0;
+$white-color: #ffffff;
+$background-color: #121213;
+
 * {
-  color: #ffffff;
+  color: $white-color;
   font-family: "Press Start 2P", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 body {
-  background-color: #121213;
+  background-color: $background-color;
+  //background-color: #B0DFE7;
 }
 
 .container {
@@ -22,6 +29,17 @@ body {
   width: 100%;
   text-align: center;
   border-bottom: solid 1px #3a3a3c;
+  //text-shadow: 3px 3px 1px #00FFFF;
+  //text-shadow: -0.5em 0 yellow,  0.5em 0 cyan;
+  //text-shadow: 4px 2px 0 #e3378d, 8px 4px 0 #4E2561;
+  //text-shadow: 4px 2px 0 #e3378d, 8px 4px 0 #0ffbf9;
+  text-shadow: 4px 2px 0 $pink-color, 6px 4px 0 $blue-color;
+ // text-shadow: 1px -3px 0 #fd00fb, -3px 1px 0 #0ffbf9;
+
+  h1 {
+    color: $white-color;
+  }
+
 }
 
 .content {
@@ -37,7 +55,7 @@ body {
   height: 60px;
   overflow: hidden;
   margin-bottom: 40px;
-  border-bottom: 2px solid #d8bfd8;
+  border-bottom: 2px solid $pink-color;
 
   p {
     text-align: right;
@@ -70,7 +88,7 @@ body {
   border: none;
   border-radius: 4px;
   //background-color: #D8BFD8;
-  background-color: #818384;
+  background-color: $grey-color;
 
   &:hover {
     opacity: 0.7;

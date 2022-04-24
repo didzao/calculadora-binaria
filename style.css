@@ -29,6 +29,11 @@ body {
   width: 100%;
   text-align: center;
   border-bottom: solid 1px #3a3a3c;
+  text-shadow: 4px 2px 0 #e3378d, 6px 4px 0 #3cbed0;
+}
+
+.titleContainer h1 {
+  color: #ffffff;
 }
 
 .content {
@@ -53,7 +58,7 @@ body {
   height: 60px;
   overflow: hidden;
   margin-bottom: 40px;
-  border-bottom: 2px solid #d8bfd8;
+  border-bottom: 2px solid #e3378d;
 }
 
 .displayContainer p, .displayBinaryContainer p {
