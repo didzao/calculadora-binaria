@@ -1,12 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
+$pink-color: #e3378d;
+$blue-color: #3cbed0;
+$white-color: #f5f5f5;
+$background-color: #121213;
+
 * {
-    color: #ffffff;
+    color: $white-color;
     font-family: "Press Start 2P", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 body {
-    background-color: #121213;
+    background-color: $background-color;
 }
 
 .container {
@@ -20,6 +25,11 @@ body {
     width: 100%;
     text-align: center;
     border-bottom: solid 1px #3a3a3c;
+    text-shadow: 4px 2px 0 $pink-color, 6px 4px 0 $blue-color;
+
+    h1 {
+        color: $white-color;
+    }
 }
 
 .pdfContainer {
@@ -48,9 +58,9 @@ body {
         border-radius: 50px;
         display: inline-block;
         text-decoration: none;
-        background-color: #818384;
+        background-color: $white-color;
         transition: all 0.3s ease-out;
-        box-shadow: 0px 5px 5px rgba($color: #fff, $alpha: 0.1);
+        box-shadow: 0px 5px 0px $blue-color;
 
         .icon {
             width: 60px;
@@ -64,7 +74,7 @@ body {
 
             i {
                 font-size: 25px;
-                color: #d8bfd8;
+                color: $blue-color;
                 line-height: 60px;
                 transition: all 0.3 ease-out;
             }
@@ -75,52 +85,30 @@ body {
             font-weight: 500;
             line-height: 60px;
             margin-left: 10px;
+            color: $white-color;
             transition: all 0.3 ease-out;
         }
 
-        &:nth-child(1) {
-            span {
-                color: #d8bfd8;
-            }
-        }
-
-        &:nth-child(2) {
-            span {
-                color: #d8bfd8;
-            }
-        }
-
-        &:nth-child(3) {
-            span {
-                color: #d8bfd8;
-            }
-        }
-
         &:hover {
+            background-color: $pink-color;
             i {
-                color: #818384;
+                color: $pink-color;
+            }
+            .icon {
+                background-color: $white-color;
             }
         }
 
         &:nth-child(1):hover {
-            width: 180px;
-            .icon {
-                background-color: #d8bfd8;
-            }
+            width: 210px;
         }
 
         &:nth-child(2):hover {
             width: 220px;
-            .icon {
-                background-color: #d8bfd8;
-            }
         }
 
         &:nth-child(3):hover {
             width: 180px;
-            .icon {
-                background-color: #d8bfd8;
-            }
         }
     }
 }

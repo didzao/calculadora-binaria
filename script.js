@@ -1,6 +1,7 @@
 const keyboard = document.querySelector(".keyboardContainer");
 const inputNumber = document.querySelector(".displayValue");
 const displayBinary = document.querySelector(".displayBinaryValue");
+const inputLabel = document.getElementById("input");
 
 let result;
 let operator;
@@ -11,7 +12,12 @@ const keys = [
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "C", "=", "«",
 ];
 
+const resetInputLabel = () => {
+    inputLabel.innerText = "Digite os valores";
+}
+
 const clean = () => {
+    resetInputLabel();
     overflow = false;
     result = undefined;
     inputNumber.innerHTML = "";
@@ -20,6 +26,7 @@ const clean = () => {
 
 const concatNumber = (value) => {
     overflow = false;
+    resetInputLabel();
     if (inputNumber.textContent == "Erro!") {
         clean();
         inputNumber.innerHTML += value;
@@ -50,6 +57,12 @@ const splitInputNumbers = (displayNumber) => {
 
 const addZeros = (binaryStr) => {
     return "00000000".substring(binaryStr.length) + binaryStr;
+}
+
+const convertBinaryToDecimal = (binary) => {
+    return binary.split('').reverse().reduce((x, y, i) => {
+        return (y === '1') ? x + Math.pow(2, i) : x;
+    }, 0);
 }
 
 const binarySum = (firstValue, secondValue) => {
@@ -84,7 +97,7 @@ const binarySum = (firstValue, secondValue) => {
         secondBinary = secondBinary.slice(0, -1);
     }
 
-    if (parseInt(sumResult, 2) >= 256) {
+    if (convertBinaryToDecimal(sumResult) >= 256 && operator.includes("*")) {
         overflow = true;
     }
 
@@ -111,8 +124,6 @@ const twosComplement = (value) => {
 }
 
 const isBiggerThan255 = (value) => value > 255;
-
-const isBiggerThan63 = (value) => value > 63;
 
 const binaryDivision = (firstValue, secondValue) => {
     let i = 0;
@@ -189,7 +200,8 @@ const errorAlert = (message) => {
             title: 'Opa!',
             text: message,
             icon: 'error',
-            backdrop: `rgba(216,191,216, 0.3)`
+            background: "#f5f5f5",
+            backdrop: `rgba(18, 18, 19, 0.3)`
         }
     )
 }
@@ -199,16 +211,12 @@ const infoAlert = () => {
         {
             width: 500,
             imageUrl: '../assets/infos.png',
-            backdrop: `rgba(216,191,216,0.3)`
+            background: "#121213",
+            confirmButtonColor: '#E3378D',
+            backdrop: `rgba(18, 18, 19, 0.3)`
         }
     )
 }
-
-const convertBinaryToDecimal = binary => {
-    return (
-        parseInt(binary.length >= 8 && binary[0] === "1" ? binary.padStart(32, "1") : binary.padStart(32, "0"), 2) >> 0
-    )
-};
 
 const operationResult = () => {
     let decimalResult;
@@ -218,19 +226,20 @@ const operationResult = () => {
     const arrayOfNumbers = splitNumbers.map(Number);
 
     if (
-        inputNumber.textContent.includes("/0")
-        || inputNumber.textContent.includes("/-0")
-        || inputNumber.textContent.includes("/+0")
-        || inputNumber.textContent === ""
+        inputNumber.textContent.includes("/0") || inputNumber.textContent.includes("/-0") || inputNumber.textContent.includes("/+0")
     ) {
         decimalResult = result = "Erro!";
-        errorAlert("Parece que você está tentando cometer o pecado de dividir por 0 "
-            + "ou então não inseriu nenhum valor!");
+        errorAlert("Parece que você está tentando cometer o pecado de dividir por 0!");
+    } else if (inputNumber.textContent === "") {
+        errorAlert("Parece que você não inseriu nenhum valor!");
+    } else if (
+        inputNumber.textContent.match((/[\+\-\*\/]/)) && !inputNumber.textContent.match(/[0-9]/)
+    ) {
+        errorAlert("Parece que você apenas inseriu os operadores e esqueceu de selecionar os valores!");
     } else if (arrayOfNumbers.some(isBiggerThan255)) {
         decimalResult = result = "Erro!";
         errorAlert("Parece que você inseriu um valor maior do 255!");
-    }
-    else {
+    } else {
         mathOperations(arrayOfNumbers);
     }
 
@@ -244,10 +253,7 @@ const operationResult = () => {
         decimalResult = convertBinaryToDecimal(result);
     }
 
-    if (result !== "Erro!" && !overflow && arrayOfNumbers.some(isBiggerThan63)) {
-        decimalResult = parseInt(result, 2);
-    }
-
+    inputLabel.innerText = "Resultado decimal";
     document.getElementById("displayBinary").innerHTML = result;
     document.getElementById("displayNumber").innerHTML = decimalResult;
 }
