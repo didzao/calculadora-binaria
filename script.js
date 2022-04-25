@@ -210,7 +210,7 @@ const infoAlert = () => {
     Swal.fire(
         {
             width: 500,
-            imageUrl: '../assets/infos.png',
+            imageUrl: './assets/infos.png',
             background: "#121213",
             confirmButtonColor: '#E3378D',
             backdrop: `rgba(18, 18, 19, 0.3)`
