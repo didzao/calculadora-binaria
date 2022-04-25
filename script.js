@@ -60,10 +60,27 @@ const addZeros = (binaryStr) => {
 }
 
 const convertBinaryToDecimal = (binary) => {
-    return binary.split('').reverse().reduce((x, y, i) => {
+    let decimal;
+    decimal = binary.split('').reverse().reduce((x, y, i) => {
         return (y === '1') ? x + Math.pow(2, i) : x;
     }, 0);
-}
+//     console.log("qqq", decimal);
+// console.log("ttt", decimal <= 128);
+    return decimal >= 128 ? decimal - 256 : decimal;
+} // ! TESTAR
+
+const signBit = (b) => {
+    console.log("b", b);
+    return b.charAt(0)
+}; // * não vai precisar
+
+function getSignedInteger(bits) {
+    var value = parseInt(bits, 2);
+    console.log("get signed teste", value & (1 << 7));
+    return value & (1 << 7)
+        ? value - (1 << 8)
+        : value;
+} // * não vai precisar
 
 const binarySum = (firstValue, secondValue) => {
     let sumResult = "";
@@ -96,6 +113,7 @@ const binarySum = (firstValue, secondValue) => {
         firstBinary = firstBinary.slice(0, -1);
         secondBinary = secondBinary.slice(0, -1);
     }
+    console.log("ss", convertBinaryToDecimal(sumResult));
 
     if (convertBinaryToDecimal(sumResult) >= 256 && operator.includes("*")) {
         overflow = true;
@@ -139,12 +157,18 @@ const binaryMultiplication = (firstValue, secondValue) => {
     let i = 0;
     let multiplicationResult = 0;
 
+    // console.log("f", firstValue);
+    // console.log("s", secondValue);
+    // console.log("####");
+
     while (i < secondValue) {
         multiplicationResult = binarySum(multiplicationResult, firstValue);
         i++;
     }
     return multiplicationResult;
 }
+
+
 
 const mathOperations = (arrayOfNumbers) => {
 
@@ -168,6 +192,7 @@ const mathOperations = (arrayOfNumbers) => {
             result = binarySum(twosComplement(arrayOfNumbers[1]), arrayOfNumbers[2])
         }
     } else if (operator.includes("*")) {
+         // !criar flag de complemento de 2
         if (operator.includes("-")) {
             if (operator.indexOf("-") === 1) {
                 result = twosComplement(binaryMultiplication(arrayOfNumbers[0], arrayOfNumbers[2]));
@@ -249,8 +274,23 @@ const operationResult = () => {
         errorAlert("Pelo visto tivemos um overflow! Tente novamente!")
     }
 
+    console.log("result", result);
+    console.log("parseInt", parseInt(result, 2));
+
+    console.log("getSignedInteger", getSignedInteger(result));
+    console.log("convertBinaryToDecimal", convertBinaryToDecimal(result));
+
     if (result !== "Erro!" && !overflow) {
         decimalResult = convertBinaryToDecimal(result);
+
+        // let mag = signBit(result);
+        // console.log("mmm", mag);
+        // if (mag === "1") {
+        //     console.log("!");
+        //     decimalResult = convertBinaryToDecimal(result) * (-1)
+        // } else {
+        //     decimalResult = convertBinaryToDecimal(result);
+        // }
     }
 
     inputLabel.innerText = "Resultado decimal";
