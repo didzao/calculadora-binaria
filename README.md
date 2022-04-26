@@ -22,3 +22,6 @@ O trabalho terá alguns critérios de avaliação, como:
 2) Tratamento de Overflow.
 3) Tratamento de número positivos e negativos.
 4) Complemento de dois.
+
+###Observação:
+Este trabalho está disponível online através do link: https://didzao.github.io/calculadora-binaria/index.html
