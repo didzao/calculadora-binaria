@@ -61,8 +61,8 @@ const addZeros = (binaryStr) => {
 }
 
 const convertBinaryToDecimal = (binary) => {
-    return binary.split('').reverse().reduce((x, y, i) => {
-        return (y === '1') ? x + Math.pow(2, i) : x;
+    return binary.split('').reverse().reduce((acc, currentValue, i) => {
+        return (currentValue === '1') ? acc + Math.pow(2, i) : acc;
     }, 0);
 }
 
