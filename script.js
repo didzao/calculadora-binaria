@@ -74,11 +74,11 @@ const binarySum = (firstValue, secondValue) => {
     let secondBinary = secondValue;
 
     if (typeof firstValue === "number") {
-        firstBinary = addZeros(parseInt(firstValue).toString(2));
+        firstBinary = addZeros((firstValue).toString(2));
     }
 
     if (typeof secondValue === "number") {
-        secondBinary = addZeros(parseInt(secondValue).toString(2));
+        secondBinary = addZeros((secondValue).toString(2));
     }
 
     while (firstBinary || secondBinary || carry) {
@@ -130,11 +130,13 @@ const binaryDivision = (firstValue, secondValue) => {
     let i = 0;
     if (firstValue === secondValue) {
         i = 1;
+    } else {
+        while (firstValue >= secondValue) {
+            firstValue = convertBinaryToDecimal(binarySum(firstValue, twosComplement(secondValue)));
+            i++
+        }
     }
-    while (firstValue >= secondValue) {
-        firstValue = convertBinaryToDecimal(binarySum(firstValue, twosComplement(secondValue)));
-        i++
-    }
+
     const quotient = i.toString(2)
     return addZeros(quotient);
 }
