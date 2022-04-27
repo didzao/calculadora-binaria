@@ -74,11 +74,11 @@ const binarySum = (firstValue, secondValue) => {
     let secondBinary = secondValue;
 
     if (typeof firstValue === "number") {
-        firstBinary = addZeros((firstValue).toString(2));
+        firstBinary = addZeros(firstValue.toString(2));
     }
 
     if (typeof secondValue === "number") {
-        secondBinary = addZeros((secondValue).toString(2));
+        secondBinary = addZeros(secondValue.toString(2));
     }
 
     while (firstBinary || secondBinary || carry) {
