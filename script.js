@@ -98,7 +98,7 @@ const binarySum = (firstValue, secondValue) => {
         secondBinary = secondBinary.slice(0, -1);
     }
 
-    if (convertBinaryToDecimal(sumResult) >= 256 && operator.includes("*")) {
+    if (convertBinaryToDecimal(sumResult) >= 256 && operator) {
         overflow = true;
     }
 
